@@ -192,8 +192,19 @@ function removeLastOccurrences(str, value) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  if (typeof str !== 'string') {
+    return 0;
+  }
+  let summer = 0;
+  const sum = [];
+  for (let i = 0; i < str.length; i += 1) {
+    sum.push(str.charCodeAt(i));
+  }
+  for (let i = 0; i < sum.length; i += 1) {
+    summer += sum[i];
+  }
+  return summer;
 }
 
 /**
@@ -389,8 +400,11 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  const hello = 'Hello,';
+  const join = `${firstName} ${lastName}`;
+  const goo = `${hello} ${join}!`;
+  return goo;
 }
 
 /**
@@ -418,8 +432,9 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  const symbols = /<\/?([^>]+)>/g;
+  return str.replace(symbols, '$1');
 }
 
 /**
@@ -437,8 +452,8 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';', 3);
 }
 
 /**
